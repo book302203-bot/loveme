@@ -65,6 +65,26 @@ button {
 <script>
 const noBtn = document.getElementById("no");
 
+function moveNo() {
+  const padding = 20; // กันขอบ
+  const btnWidth = noBtn.offsetWidth;
+  const btnHeight = noBtn.offsetHeight;
+
+  const maxX = window.innerWidth - btnWidth - padding;
+  const maxY = window.innerHeight - btnHeight - padding;
+
+  const x = Math.random() * maxX + padding;
+  const y = Math.random() * maxY + padding;
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+
+/* ตรงนี้ต้องมี */
+noBtn.addEventListener("mouseenter", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
+</script>
+
 /* วิ่งหนีแบบลื่น รองรับมือถือ */
 function moveNo() {
   const maxX = window.innerWidth - noBtn.offsetWidth;
