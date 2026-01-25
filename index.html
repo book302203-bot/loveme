@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>ขอเป็นแฟนได้ไหม 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ffb6c1, #ffe4e1);
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+h1 {
+  color: #ff1493;
+  font-size: 2.2em;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+/* ปุ่มตกลง (กดได้แล้ว) */
+#yes {
+  background: #ff69b4;
+  color: white;
+}
+
+/* ปุ่มไม่ตกลง */
+#no {
+  background: white;
+  color: #ff1493;
+  position: absolute;
+}
+
+/* อิโมจิวิ่ง */
+.emoji {
+  position: absolute;
+  font-size: 30px;
+  pointer-events: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>เป็นเเฟนกันไหม 💕</h1>
+  <button id="yes">ตกลง 💖</button>
+  <button id="no">ไม่ตกลง 🙈</button>
+</div>
+
+<script>
+/* ปุ่มตกลง */
+document.getElementById("yes").onclick = () => {
+  alert("เย้!!! เป็นแฟนกันแล้ว 💕🐱");
+};
+
+/* ปุ่มไม่ตกลง วิ่งหนี */
+const noBtn = document.getElementById("no");
+
+function moveNoButton() {
+  const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+  const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+
+noBtn.addEventListener("mouseenter", moveNoButton);
+noBtn.addEventListener("touchstart", moveNoButton);
+
+/* สร้างอิโมจิวิ่ง */
+function createEmoji(emoji) {
+  const el = document.createElement("div");
+  el.className = "emoji";
+  el.innerText = emoji;
+  el.style.left = Math.random() * window.innerWidth + "px";
+  el.style.top = Math.random() * window.innerHeight + "px";
+  document.body.appendChild(el);
+
+  setInterval(() => {
+    el.style.left = Math.random() * window.innerWidth + "px";
+    el.style.top = Math.random() * window.innerHeight + "px";
+  }, 1500);
+}
+
+/* หัวใจ + คิตี้ */
+for (let i = 0; i < 8; i++) createEmoji("💖");
+for (let i = 0; i < 6; i++) createEmoji("🐱");
+</script>
+
+</body>
+</html>
